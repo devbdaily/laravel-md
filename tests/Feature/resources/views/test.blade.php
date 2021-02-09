@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>Test Page</title>
+    </head>
+    <body>
+        @markdown($markdown)
+    </body>
+</html>
