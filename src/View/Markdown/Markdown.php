@@ -2,23 +2,25 @@
 
 namespace DevBDaily\LaravelMD\View\Markdown;
 
+use League\CommonMark\CommonMarkConverter;
+
 class Markdown
 {
     /**
-     * The markdown configuration.
+     * The CommonMark Converter instance.
      *
-     * @var array
+     * @var \League\CommonMark\CommonMarkConverter
      */
-    protected $config = [];
+    protected $converter;
 
     /**
      * Markdown service constructor.
      *
-     * @param array $config
+     * @param \League\CommonMark\CommonMarkConverter $converter
      */
-    public function __construct(array $config = [])
+    public function __construct(CommonMarkConverter $converter)
     {
-        $this->config = $config;
+        $this->converter = $converter;
     }
 
     /**
@@ -27,8 +29,8 @@ class Markdown
      * @param string $string
      * @return string
      */
-    public function parse(string $string)
+    public function parse(string $string): string
     {
-        return $string;
+        return $this->converter->convertToHtml($string);
     }
 }
