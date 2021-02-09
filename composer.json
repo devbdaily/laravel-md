@@ -1,0 +1,14 @@
+{
+    "name": "devbdaily/laravel-md",
+    "description": "Customizable markdown components rendered server-side in Laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Braden Carlson",
+            "email": "devbdaily@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
