@@ -2,6 +2,7 @@
 
 namespace DevBDaily\LaravelMD\View\Markdown\Extension;
 
+use DevBDaily\LaravelMD\View\Markdown\Block\Renderer;
 use League\CommonMark\Block\Element as CoreBlockElement;
 use League\CommonMark\Block\Renderer as CoreBlockRenderer;
 use League\CommonMark\ConfigurableEnvironmentInterface;
@@ -21,7 +22,7 @@ class LaravelComponentExtension implements ExtensionInterface
     {
         $environment
             ->addBlockRenderer(CoreBlockElement\Document::class, new CoreBlockRenderer\DocumentRenderer(), 0)
-            ->addBlockRenderer(CoreBlockElement\Paragraph::class, new CoreBlockRenderer\ParagraphRenderer(), 0)
+            ->addBlockRenderer(CoreBlockElement\Paragraph::class, new Renderer\ParagraphRenderer(), 0)
 
             ->addInlineRenderer(CoreInlineElement\Text::class, new CoreInlineRenderer\TextRenderer(), 0)
         ;

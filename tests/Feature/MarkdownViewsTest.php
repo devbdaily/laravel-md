@@ -11,9 +11,8 @@ class MarkdownViewsTest extends LaravelMDTestCase
         parent::setUp();
     }
 
-    public function testMarkdownDirectiveWorks()
+    public function testMarkdownDirectiveDoesNotThrowErrors()
     {
-        $this->withoutExceptionHandling();
         $markdown = "test";
 
         $this->createRoute($markdown);
@@ -21,6 +20,19 @@ class MarkdownViewsTest extends LaravelMDTestCase
         $response = $this->get('/');
 
         $response->assertOk();
+    }
+
+    public function testParagraphBlock()
+    {
+        $markdown = "this is a test";
+
+        $this->createRoute($markdown);
+
+        $response = $this->get('/');
+
+        $response->assertSee(<<<HTML
+<p>this is a test</p>
+HTML, false);
     }
 
     protected function createRoute($markdown)

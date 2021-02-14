@@ -2,6 +2,7 @@
 
 namespace DevBDaily\LaravelMD;
 
+use DevBDaily\LaravelMD\View\Components\Paragraph;
 use DevBDaily\LaravelMD\View\Markdown\Extension\LaravelComponentExtension;
 use DevBDaily\LaravelMD\View\Markdown\Markdown;
 use Illuminate\Support\Facades\Blade;
@@ -24,6 +25,14 @@ class ServiceProvider extends LaravelServiceProvider
 
         $this->publishes([
             __DIR__ . "/../config/markdown.php" => config_path('markdown.php'),
+        ], 'config');
+
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'md');
+        $this->publishes([
+            __DIR__.'/../resources/views' => resource_path('views/vendor/md')
+        ], 'views');
+        $this->loadViewComponentsAs('md', [
+            Paragraph::class
         ]);
     }
 
