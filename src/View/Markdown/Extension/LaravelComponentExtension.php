@@ -23,10 +23,12 @@ class LaravelComponentExtension implements ExtensionInterface
     {
         $environment
             ->addBlockParser(new CoreBlockParser\BlockQuoteParser(), 70)
+            ->addBlockParser(new CoreBlockParser\ATXHeadingParser(), 60)
             
             ->addBlockRenderer(CoreBlockElement\Document::class, new CoreBlockRenderer\DocumentRenderer(), 0)
             ->addBlockRenderer(CoreBlockElement\Paragraph::class, new Renderer\ParagraphRenderer(), 0)
             ->addBlockRenderer(CoreBlockElement\BlockQuote::class, new Renderer\BlockQuoteRenderer(), 0)
+            ->addBlockRenderer(CoreBlockElement\Heading::class, new Renderer\HeadingRenderer(), 0)
 
             ->addInlineRenderer(CoreInlineElement\Text::class, new CoreInlineRenderer\TextRenderer(), 0)
         ;
